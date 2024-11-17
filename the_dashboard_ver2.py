@@ -105,6 +105,8 @@ rules = association_rules(frequent_itemsets, metric="lift", min_threshold=1.0)
 
 # ---------------------
 # Section 4: Upsell Recommendations
+st.header('Section 4: Upsell Prediction')
+
 def get_upsell_recommendations(customer_name, customer_data, product_data, top_n=5):
     customer_purchases = customer_data[customer_data['Client Name'] == customer_name]
     if customer_purchases.empty:
@@ -141,6 +143,8 @@ for rec in upsell_recommendations:
 
 # ---------------------
 # Section 5: Cross-Sell Prediction
+st.header('Section 5: Cross-Sell Prediction')
+
 def get_cross_sell_recommendations(rules, selected_product, top_n=5):
     selected_product_rules = rules[rules['antecedents'].apply(lambda x: selected_product in x)]
     selected_product_rules = selected_product_rules.sort_values(by='confidence', ascending=False)
